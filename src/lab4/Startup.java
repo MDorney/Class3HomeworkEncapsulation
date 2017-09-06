@@ -13,9 +13,7 @@ public class Startup {
     public static void main(String[] args) {
         HumanResources hr = new HumanResources();
         hr.hireEmployee("Peter","Piper","333-33-3333");
-        
-        hr.orientHire("A101");
-        employee.getReportService().outputReport();
+        hr.outputReport("333-33-3333");
     }
     
     

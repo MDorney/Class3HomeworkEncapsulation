@@ -21,11 +21,31 @@ public class HumanResources {
     public void hireEmployee(String firstName, String lastName, String ssn) {
         Employee newGuy = new Employee(firstName, lastName, ssn);
         employees.add(newGuy);
-    }
-    public void orientHire(Employee newHire){
-        newHire.doFirstTimeOrientation("Test Cube");
+        newGuy.doFirstTimeOrientation("Test Cube");
     }
     
+    public void outputReport(String ssn) {
+        Employee e = null;
+        
+        // find employee in list
+        for(Employee emp : employees) {
+            if(emp.getSsn().equals(ssn)) {
+                e = emp;
+                break;
+            } else {
+                // if not found end method prematurely
+                return;
+            }
+        }
+
+        // if found run report
+        if(e.isMetWithHr() && e.isMetDeptStaff()
+           && e.isReviewedDeptPolicies() && e.isMovedIn()) {
+            
+            e.getReportService().outputReport();
+            
+        }
+    }
     
     public void fireEmployee(Employee newFire){
         employees.remove(newFire);
