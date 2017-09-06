@@ -29,6 +29,7 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private DateUtilities util;
 
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
@@ -44,7 +45,7 @@ public class Employee {
     // would only do this once, upon being hired.
     private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
-        String fmtDate = DateUtilities.getFormattedDate(orientationDate);        
+        String fmtDate = util.getFormattedDate(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Hr on "
             + fmtDate);
     }
@@ -53,7 +54,7 @@ public class Employee {
     // would only do this once, upon being hired.:
     private void meetDepartmentStaff() {
         metDeptStaff = true;
-        String fmtDate = DateUtilities.getFormattedDate(orientationDate);        
+        String fmtDate = util.getFormattedDate(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
             + fmtDate);
     }
@@ -63,7 +64,7 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         reviewedDeptPolicies = true;
-        String fmtDate = DateUtilities.getFormattedDate(orientationDate);        
+        String fmtDate = util.getFormattedDate(orientationDate);        
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
             + fmtDate);
     }
@@ -74,7 +75,7 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;
-        String fmtDate = DateUtilities.getFormattedDate(orientationDate);        
+        String fmtDate = util.getFormattedDate(orientationDate);        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
                 + cubeId + " on " + fmtDate);
     }

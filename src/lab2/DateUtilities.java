@@ -13,7 +13,7 @@ import java.util.Date;
  * @author jlombardo
  */
 public class DateUtilities {
-    public static String getFormattedDate(Date date) {
+    public String getFormattedDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yy");
         return sdf.format(date);
     }
