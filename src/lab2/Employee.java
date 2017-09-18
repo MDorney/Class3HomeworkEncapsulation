@@ -35,6 +35,7 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ssn = ssn;
+        util = new DateUtilities();
     }
     public void completeOrientation() {
         meetWithHrForBenefitAndSalryInfo();
@@ -88,11 +89,10 @@ public class Employee {
     // allowed through validation.
     
     public void setFirstName(String firstName) {
-       if(firstName == ""){
-           throw new IllegalArgumentException();
-       } else {
-       this.firstName = firstName;
-       }
+        if(firstName == null || firstName.isEmpty()) {
+            throw new IllegalArgumentException("first name is required");
+        }
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -100,11 +100,10 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-        if(lastName == ""){
-            throw new IllegalArgumentException();
-        } else {
-        this.lastName = lastName;
+        if(lastName == null || lastName.isEmpty()) {
+            throw new IllegalArgumentException("last name is required");
         }
+        this.lastName = lastName;
     }
 
     public String getSsn() {
@@ -112,6 +111,10 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
+        if(ssn == null || ssn.length() < 9 || ssn.length() > 11) {
+            throw new IllegalArgumentException("ssn is required and must be "
+                    + "between 9 and 11 characters (if hyphens are used)");
+        }
         this.ssn = ssn;
     }
 
@@ -154,6 +157,9 @@ public class Employee {
 
     
     public void setCubeId(String cubeId) {
+        if(cubeId == null || cubeId.isEmpty()) {
+            throw new IllegalArgumentException("cube id is required");
+        }
         this.cubeId = cubeId;
     }
 
@@ -162,5 +168,9 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
+        if(orientationDate == null) {
+            throw new IllegalArgumentException("orientationDate is required");
+        }
         this.orientationDate = orientationDate;
-    }}
+    }
+}
